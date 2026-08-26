@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Primitive */
+  --color-blue-600: #2563EB;
+  --color-blue-500: #3B82F6;
+  --color-orange-600: #EA580C;
+  --color-blue-50: #EFF6FF;
+  --color-blue-900: #1E40AF;
+  --color-slate-600: #475569;
+  --color-red-600: #DC2626;
+  --color-green-600: #16A34A;
+
+  /* Semantic */
+  --color-primary: var(--color-blue-600);
+  --color-on-primary: #FFFFFF;
+  --color-secondary: var(--color-blue-500);
+  --color-accent: var(--color-orange-600);
+  --color-on-accent: #000000;
+  --color-background: var(--color-blue-50);
+  --color-foreground: var(--color-blue-900);
+  --color-card: #FFFFFF;
+  --color-card-foreground: var(--color-blue-900);
+  --color-muted: #E9EFF8;
+  --color-muted-foreground: var(--color-slate-600);
+  --color-border: #BFDBFE;
+  --color-destructive: var(--color-red-600);
+  --color-on-destructive: #FFFFFF;
+  --color-success: var(--color-green-600);
+  --color-ring: var(--color-primary);
+
+  --font-ui: 'Fira Sans', system-ui, -apple-system, sans-serif;
+  --font-data: 'Fira Code', 'SF Mono', ui-monospace, monospace;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-ui);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-data {
+  font-family: var(--font-data);
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button, a, [role="button"], input, select, textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
