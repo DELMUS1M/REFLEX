@@ -1,9 +1,16 @@
 ﻿import { useEffect } from 'react';
 
-export function useDocumentMeta(title: string) {
+interface MetaProps {
+  title: string;
+  description?: string;
+  path?: string;
+}
+
+export function useDocumentMeta(meta: string | MetaProps) {
   useEffect(() => {
+    const title = typeof meta === 'string' ? meta : meta.title;
     document.title = title;
-  }, [title]);
+  }, [meta]);
 }
 
 export default useDocumentMeta;
