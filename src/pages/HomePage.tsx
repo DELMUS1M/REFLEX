@@ -1,6 +1,4 @@
-﻿import React from 'react';
-
-export default function HomePage() {
+﻿export function HomePage() {
   return (
     <div className="min-h-screen bg-[#0B0F19] text-[#F3F4F6] font-sans selection:bg-[#E65100] selection:text-white flex flex-col">
       {/* 
@@ -79,7 +77,7 @@ export default function HomePage() {
                 </div>
               </div>
               
-              {/* Terminal Body (Fixed JSX escaping) */}
+              {/* Terminal Body */}
               <div className="p-6 font-mono text-sm flex flex-col gap-3 overflow-hidden h-full text-[#6B7280]">
                 <p><span className="text-[#E65100]">&gt;</span> [AUTH] Validating session token...</p>
                 <p><span className="text-green-500">✓</span> Session established (8ms)</p>
@@ -140,3 +138,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+export default HomePage;
