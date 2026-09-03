@@ -5,7 +5,6 @@ export default function HomePage() {
     <div className="min-h-screen bg-[#0B0F19] text-[#F3F4F6] font-sans selection:bg-[#E65100] selection:text-white flex flex-col">
       {/* 
         NAVIGATION BAR 
-        Dense, sticky, and structured with a severe bottom border.
       */}
       <header className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-[#161E2E] border-b border-gray-700">
         <div className="flex items-center gap-4">
@@ -34,7 +33,6 @@ export default function HomePage() {
 
       {/* 
         MAIN HERO SECTION
-        Brutalist layout, massive typography, sharp edges.
       */}
       <main className="flex-1 max-w-[1440px] w-full mx-auto px-6 pt-24 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -81,13 +79,13 @@ export default function HomePage() {
                 </div>
               </div>
               
-              {/* Terminal Body */}
+              {/* Terminal Body (Fixed JSX escaping) */}
               <div className="p-6 font-mono text-sm flex flex-col gap-3 overflow-hidden h-full text-[#6B7280]">
-                <p><span className="text-[#E65100]">></span> [AUTH] Validating session token...</p>
+                <p><span className="text-[#E65100]">&gt;</span> [AUTH] Validating session token...</p>
                 <p><span className="text-green-500">✓</span> Session established (8ms)</p>
-                <p><span className="text-[#E65100]">></span> [SYNC] Connecting to Postgres pool...</p>
+                <p><span className="text-[#E65100]">&gt;</span> [SYNC] Connecting to Postgres pool...</p>
                 <p><span className="text-green-500">✓</span> Database connected (12ms)</p>
-                <p><span className="text-[#E65100]">></span> [STREAM] Subscribing to location_updates</p>
+                <p><span className="text-[#E65100]">&gt;</span> [STREAM] Subscribing to location_updates</p>
                 <p className="text-[#F3F4F6] mt-4 border-l-2 border-[#E65100] pl-3 py-1 bg-[#0B0F19]">
                   payload: {"{"}<br/>
                   &nbsp;&nbsp;rider_id: 'R-7734',<br/>
@@ -107,7 +105,6 @@ export default function HomePage() {
 
         {/* 
           DATA METRICS GRID
-          High-contrast borders, solid surface colors, strictly mathematical padding.
         */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-24">
           
