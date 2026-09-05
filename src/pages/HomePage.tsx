@@ -6,7 +6,6 @@ import { useDocumentMeta } from '../lib/useDocumentMeta';
 import { LiveRouteField } from '../components/LiveRouteField';
 import { DeliveryTimeline } from '../components/DeliveryTimeline';
 import { FaqAccordion } from '../components/FaqAccordion';
-import { PlaceholderPhoto } from '../components/PlaceholderPhoto';
 
 const STRUCTURED_DATA = {
   '@context': 'https://schema.org',
@@ -143,10 +142,7 @@ export function HomePage() {
         </div>
 
         <div data-reveal className="overflow-hidden rounded-2xl">
-          <PlaceholderPhoto
-            caption="rider handing a package to a customer at a shop counter"
-            className="aspect-[4/3] w-full"
-          />
+          <img  src="/hero-handoff.jpg"  alt="A rider handing a package to a retailer at a shop counter"  className="aspect-[4/3] w-full rounded-2xl object-cover"/>
         </div>
       </section>
 
