@@ -142,7 +142,7 @@ export function HomePage() {
         </div>
 
         <div data-reveal className="overflow-hidden rounded-2xl">
-          <img  src="/hero-handoff.jpg"  alt="A rider handing a package to a retailer at a shop counter"  className="aspect-[4/3] w-full rounded-2xl object-cover"/>
+          <img  src="/hero-handoff.jpg"  alt="A rider handing a package to a retailer at a shop counter"  className="aspect-[4/3] w-full rounded-2xl object-cover" fetchpriority="high" />
         </div>
       </section>
 
