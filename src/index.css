@@ -35,36 +35,13 @@
 
   color-scheme: light;
 
-  /* Landing page (dark) primitives — scoped under .theme-landing below,
-     never touching the tokens the retailer/dispatcher/rider dashboards
-     use. Those stay light on purpose: riders read this screen outdoors. */
-  --ref-night-asphalt: #0A0C10;
-  --ref-cloud-white: #F5F6F8;
-  --ref-ash-gray: #8B93A1;
-  --ref-steel-mist: #B6BCC6;
-  --ref-tracking-blue: #2563EB;
-  --ref-delivery-orange: #EA580C;
-  --ref-signal-green: #16A34A;
-  --ref-route-line-dim: #1C2129;
-}
-
-/* Applied to the root wrapper only on the "/" route (see App.tsx). Overrides
-   the same semantic layer every other component already reads from, so the
-   sticky Header and its children go dark for free without their own edits. */
-.theme-landing {
-  color-scheme: dark;
-  --color-background: var(--ref-night-asphalt);
-  --color-foreground: var(--ref-cloud-white);
-  --color-card: var(--ref-night-asphalt);
-  --color-card-foreground: var(--ref-cloud-white);
-  --color-muted: var(--ref-route-line-dim);
-  --color-muted-foreground: var(--ref-ash-gray);
-  --color-border: var(--ref-route-line-dim);
-  --color-primary: var(--ref-tracking-blue);
-  --color-on-primary: var(--ref-cloud-white);
-  --color-accent: var(--ref-delivery-orange);
-  --color-on-accent: var(--ref-night-asphalt);
-  --color-success: var(--ref-signal-green);
+  /* Landing page only: UC-style alternating white/near-black section
+     rhythm. --color-ink is deliberately not pure black, matching the
+     brand's blue-leaning foreground rather than a generic neutral. */
+  --color-paper: #FFFFFF;
+  --color-ink: #0B1220;
+  --color-ink-foreground: #F4F6FA;
+  --color-ink-muted: #8B93A1;
 }
 
 * {

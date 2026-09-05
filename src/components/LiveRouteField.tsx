@@ -1,22 +1,15 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * The landing page's one signature visual: a faint city grid with three
- * markers — retailer (square), dispatcher (diamond), rider (circle) — and a
- * dashed line that draws itself from one to the next, pausing at each
- * marker, then flashes green on "delivery" before a new cycle starts
- * elsewhere on the grid. It's a literal render of the product's own status
- * flow, not decorative art, so the marker shapes match what a retailer or
- * dispatcher would recognize from the app itself.
- *
- * GSAP loads on demand, same pattern as the hero reveal in HomePage — this
- * is a nice-to-have animation, not core content.
+ * A literal diagram of the product's own status flow: retailer (square) to
+ * dispatcher (diamond) to rider (circle), with a dashed line that draws
+ * itself and flashes green on delivery. Used in the "how it works" section,
+ * not the hero. The hero carries a real photo instead.
  */
 
 const GRID_LINES_X = [40, 110, 180, 250, 320, 390];
 const GRID_LINES_Y = [30, 90, 150, 210, 270];
 
-// Two alternating routes so the cycle doesn't look identical every time.
 const ROUTES = [
   { retailer: { x: 70, y: 60 }, dispatcher: { x: 220, y: 120 }, rider: { x: 360, y: 210 } },
   { retailer: { x: 320, y: 60 }, dispatcher: { x: 180, y: 150 }, rider: { x: 70, y: 240 } },
@@ -31,8 +24,6 @@ export function LiveRouteField() {
     if (!svgRef.current) return;
 
     if (mq.matches) {
-      // No animation, but still show one complete route so the diagram
-      // reads correctly rather than leaving the line invisible.
       const path = svgRef.current.querySelector<SVGPathElement>('[data-route-path]');
       path?.setAttribute('opacity', '1');
       return;
@@ -78,7 +69,7 @@ export function LiveRouteField() {
         tl.to(path, { strokeDashoffset: length * 0.55, duration: 1.6, ease: 'power1.inOut' })
           .to(dispatcherMark, { scale: 1.25, duration: 0.2, ease: 'power1.out', transformOrigin: 'center' }, '-=0.1')
           .to(dispatcherMark, { scale: 1, duration: 0.3, ease: 'power1.in' })
-          .to({}, { duration: 0.3 }) // dwell at dispatcher
+          .to({}, { duration: 0.3 })
           .to(path, { strokeDashoffset: 0, duration: 1.6, ease: 'power1.inOut' })
           .to(riderRing, { opacity: 1, scale: 1.9, duration: 0.6, ease: 'power1.out' }, '-=0.1')
           .to(riderRing, { opacity: 0, duration: 0.5, ease: 'power1.in' }, '-=0.1')
@@ -102,8 +93,7 @@ export function LiveRouteField() {
       role="img"
       aria-label="Animated diagram of a delivery moving from a retailer to a dispatcher to a rider"
     >
-      {/* City grid */}
-      <g stroke="var(--ref-route-line-dim)" strokeWidth="1" opacity="0.7">
+      <g stroke="var(--color-border)" strokeWidth="1">
         {GRID_LINES_X.map((x) => (
           <line key={`x-${x}`} x1={x} y1="0" x2={x} y2="300" />
         ))}
@@ -112,39 +102,35 @@ export function LiveRouteField() {
         ))}
       </g>
 
-      {/* Active route line */}
       <path
         data-route-path
         d="M70,60 L220,120 L360,210"
         fill="none"
-        stroke="var(--ref-tracking-blue)"
-        strokeWidth="2"
+        stroke="var(--color-primary)"
+        strokeWidth="2.5"
         strokeLinecap="round"
-        strokeDasharray="4 6"
+        strokeDasharray="4 7"
         opacity="0"
       />
 
-      {/* Retailer marker: square */}
       <g data-marker="retailer" transform="translate(70,60)">
-        <rect x="-6" y="-6" width="12" height="12" rx="2" fill="var(--ref-tracking-blue)" />
+        <rect x="-6" y="-6" width="12" height="12" rx="2" fill="var(--color-primary)" />
       </g>
 
-      {/* Dispatcher marker: diamond */}
       <g data-marker="dispatcher" transform="translate(220,120)">
-        <rect x="-6" y="-6" width="12" height="12" fill="var(--ref-delivery-orange)" transform="rotate(45)" />
+        <rect x="-6" y="-6" width="12" height="12" fill="var(--color-accent)" transform="rotate(45)" />
       </g>
 
-      {/* Rider marker: circle, with a completion ring that flashes green */}
       <g data-marker="rider" transform="translate(360,210)">
-        <circle r="6" fill="var(--ref-cloud-white)" />
+        <circle r="6" fill="var(--color-ink)" />
       </g>
       <circle
         data-rider-ring
         r="6"
         transform="translate(360,210)"
         fill="none"
-        stroke="var(--ref-signal-green)"
-        strokeWidth="2"
+        stroke="var(--color-success)"
+        strokeWidth="2.5"
         opacity="0"
       />
     </svg>

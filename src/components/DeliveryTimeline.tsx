@@ -1,11 +1,8 @@
 import type { Status } from '../lib/types';
 
 /**
- * A proof point, not an illustration: the same four states and order the
- * product actually uses (see lib/types.ts STATUS_ORDER), shown with example
- * timestamps for a single sample delivery. Colors follow the Status Pill
- * spec in design.md — pending stays neutral, the current step is tracking
- * blue, and delivered is the only place signal green appears.
+ * Same real status vocabulary and order the product uses (see
+ * lib/types.ts STATUS_ORDER). A proof point, not marketing copy.
  */
 
 const STEPS: { status: Status; label: string; time: string }[] = [
@@ -15,7 +12,7 @@ const STEPS: { status: Status; label: string; time: string }[] = [
   { status: 'Delivered', label: 'Delivered', time: '10:41' },
 ];
 
-const CURRENT_INDEX = 3; // this sample has completed — every step is "reached"
+const CURRENT_INDEX = 3;
 
 export function DeliveryTimeline() {
   return (
@@ -24,27 +21,21 @@ export function DeliveryTimeline() {
         const reached = i <= CURRENT_INDEX;
         const isDelivered = step.status === 'Delivered';
         const pillColor = !reached
-          ? 'border border-[var(--ref-ash-gray)] text-[var(--ref-ash-gray)]'
+          ? 'border border-[var(--color-border)] text-[var(--color-muted-foreground)]'
           : isDelivered
-            ? 'bg-[var(--ref-signal-green)] text-[var(--ref-night-asphalt)]'
-            : 'bg-[var(--ref-tracking-blue)] text-[var(--ref-cloud-white)]';
+            ? 'bg-[var(--color-success)] text-white'
+            : 'bg-[var(--color-primary)] text-white';
 
         return (
           <li key={step.status} className="flex flex-1 items-center gap-2">
             <div className="flex min-w-[92px] flex-col items-start gap-2">
-              <span
-                className={`rounded-full px-3 py-1 text-[13px] font-medium tracking-[0.04em] ${pillColor}`}
-              >
+              <span className={`rounded-full px-3 py-1 text-[13px] font-medium tracking-[0.04em] ${pillColor}`}>
                 {step.label}
               </span>
-              <span className="font-data text-[13px] text-[var(--ref-steel-mist)]">{step.time}</span>
+              <span className="font-data text-[13px] text-[var(--color-muted-foreground)]">{step.time}</span>
             </div>
             {i < STEPS.length - 1 && (
-              <span
-                className="hidden h-px flex-1 sm:block"
-                style={{ backgroundColor: 'var(--ref-route-line-dim)' }}
-                aria-hidden="true"
-              />
+              <span className="hidden h-px flex-1 bg-[var(--color-border)] sm:block" aria-hidden="true" />
             )}
           </li>
         );
